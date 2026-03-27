@@ -3,78 +3,209 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wedding Invitation</title>
+<title>Wedding Invitation | Naga Raju & Sai Nirosha</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(to right, #ffecd2, #fcb69f);
-        text-align: center;
-        color: #333;
-    }
+/* Animated Gradient Background */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(-45deg, #fff5f5, #fef3e2, #fdf5e6, #fffafa);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    overflow: hidden;
+}
 
-    .container {
-        margin-top: 100px;
-    }
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-    h1 {
-        font-size: 40px;
-    }
+/* Card */
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 30px 0 30px 0;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 420px;
+    width: 85%;
+    border: 2px solid #d4af37;
+    position: relative;
+}
 
-    button {
-        padding: 15px 25px;
-        font-size: 18px;
-        border: none;
-        border-radius: 25px;
-        background-color: #ff6f61;
-        color: white;
-        cursor: pointer;
-        transition: 0.3s;
-    }
+.card::before {
+    content: "❦";
+    font-size: 30px;
+    color: #d4af37;
+    display: block;
+    margin-bottom: 10px;
+}
 
-    button:hover {
-        background-color: #ff3b2e;
-    }
+h1 { color: #8b0000; }
 
-    .details {
-        margin-top: 30px;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 1s ease;
-        pointer-events: none;
-    }
+.couple-names {
+    font-size: 2.2rem;
+    color: #8b0000;
+    margin: 15px 0;
+    font-weight: bold;
+}
 
-    .show {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
+/* Photo */
+.couple-photo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.couple-photo img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #d4af37;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.couple-photo img:hover {
+    transform: scale(1.05);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    margin-top: 15px;
+}
+
+.btn-open {
+    background: #d4af37;
+    color: white;
+}
+
+.btn-maps {
+    background: white;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+}
+
+/* Music Button */
+.music-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* Hidden section */
+#secret-details {
+    display: none;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.venue-info {
+    background: #fff9f0;
+    padding: 15px;
+    border-radius: 15px;
+    margin: 15px 0;
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>You're Invited 💍</h1>
-    <p>Click below to see the invitation</p>
+<div class="card">
 
-    <button id="inviteBtn" onclick="showDetails()">Open Invitation</button>
+<!-- Music Toggle -->
+<button class="music-btn" onclick="toggleMusic()">🔊</button>
 
-    <div class="details" id="details">
-        <h2>NAGA RAJU ❤️ SAI NIROSHA</h2>
-        <p><strong>Date:</strong> 29th April 2026</p>
-        <p><strong>Venue:</strong> At Our Home</p>
-        <p>We would love your presence on our special day!</p>
-    </div>
+<!-- Cover -->
+<div id="cover">
+    <h1>You're Invited!</h1>
+    <p>To the wedding celebration of</p>
+    <h2 style="color:#d4af37">Naga Raju & Sai Nirosha</h2>
+    <button class="btn btn-open" onclick="openInvite()">Open Invitation</button>
 </div>
 
-<script>
-function showDetails() {
-    document.getElementById("details").classList.add("show");
+<!-- Hidden Details -->
+<div id="secret-details">
 
-    // Hide button after click
-    document.getElementById("inviteBtn").style.display = "none";
+    <div class="couple-photo">
+        <img src="https://raw.githubusercontent.com/vinaykumarmanem-cmd/Wedding-Invitation/main/couple.jpg.jpeg">
+    </div>
+
+    <div class="couple-names">
+        Naga Raju <br>&<br> Sai Nirosha
+    </div>
+
+    <p><strong>April 29, 2026</strong></p>
+
+    <div class="venue-info">
+        <strong>Venue:</strong><br>
+        At Our Residence, Chapara Village<br>
+        PIN: 532216
+    </div>
+
+    <a href="https://www.google.com/maps/search/?api=1&query=Chapara+Village+pedda+devara+veedhi+532216" 
+       target="_blank" class="btn btn-maps">
+       📍 View on Google Maps
+    </a>
+
+    <p style="margin-top:20px; font-size: 14px; color: #8b0000;">
+        Your presence will be a cherished blessing as we begin this new journey together ✨
+    </p>
+
+</div>
+
+</div>
+
+<!-- 🎵 Background Music -->
+<audio id="bg-music" loop>
+    <!-- Replace this with your Telugu MP3 -->
+    <source src="https://www.mfiles.co.uk/mp3-downloads/edelweiss-piano.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let isPlaying = false;
+
+function openInvite() {
+    document.getElementById('cover').style.display = 'none';
+    document.getElementById('secret-details').style.display = 'block';
+
+    let music = document.getElementById('bg-music');
+    music.play();
+    isPlaying = true;
+}
+
+function toggleMusic() {
+    let music = document.getElementById('bg-music');
+
+    if (isPlaying) {
+        music.pause();
+        isPlaying = false;
+    } else {
+        music.play();
+        isPlaying = true;
+    }
 }
 </script>
 
