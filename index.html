@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Invitation</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(to right, #ffecd2, #fcb69f);
+        text-align: center;
+        color: #333;
+    }
+
+    .container {
+        margin-top: 100px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    button {
+        padding: 15px 25px;
+        font-size: 18px;
+        border: none;
+        border-radius: 25px;
+        background-color: #ff6f61;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background-color: #ff3b2e;
+    }
+
+    .details {
+        margin-top: 30px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 1s ease;
+        pointer-events: none;
+    }
+
+    .show {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>You're Invited 💍</h1>
+    <p>Click below to see the invitation</p>
+
+    <button id="inviteBtn" onclick="showDetails()">Open Invitation</button>
+
+    <div class="details" id="details">
+        <h2>NAGA RAJU ❤️ SAI NIROSHA</h2>
+        <p><strong>Date:</strong> 29th April 2026</p>
+        <p><strong>Venue:</strong> At Our Home</p>
+        <p>We would love your presence on our special day!</p>
+    </div>
+</div>
+
+<script>
+function showDetails() {
+    document.getElementById("details").classList.add("show");
+
+    // Hide button after click
+    document.getElementById("inviteBtn").style.display = "none";
+}
+</script>
+
+</body>
+</html>
