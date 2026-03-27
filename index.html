@@ -146,7 +146,7 @@ h1 { color: #8b0000; }
 <div id="secret-details">
 
     <div class="couple-photo">
-        <img src="https://raw.githubusercontent.com/vinaykumarmanem-cmd/Wedding-Invitation/main/couple.jpg.jpeg">
+        <img src="https://raw.githubusercontent.com/vinaykumarmanem-cmd/Wedding/main/couple.jpg.jpeg">
     </div>
 
     <div class="couple-names">
@@ -174,9 +174,9 @@ h1 { color: #8b0000; }
 
 </div>
 
-<!-- 🎵 Background Music (REPLACE LINK WITH YOUR SONG) -->
+<!-- 🎵 LOCAL SONG (must be in same repo folder) -->
 <audio id="bg-music" loop preload="auto">
-    <source src="https://raw.githubusercontent.com/vinaykumarmanem-cmd/Wedding/main/song.mp3" type="audio/mpeg">
+    <source src="song.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -184,14 +184,16 @@ function openInvite() {
     document.getElementById('cover').style.display = 'none';
     document.getElementById('secret-details').style.display = 'block';
 
-    let music = document.getElementById('bg-music');
+    const music = document.getElementById('bg-music');
+
+    music.currentTime = 0;
     music.play().catch(() => {
-        console.log("Autoplay blocked");
+        alert("Tap anywhere to enable music 🎵");
     });
 }
 
 function toggleMusic() {
-    let music = document.getElementById('bg-music');
+    const music = document.getElementById('bg-music');
 
     if (music.paused) {
         music.play();
