@@ -17,7 +17,6 @@ body {
     background: linear-gradient(-45deg, #fff5f5, #fef3e2, #fdf5e6, #fffafa);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
-    overflow: hidden;
 }
 
 @keyframes gradientBG {
@@ -49,10 +48,21 @@ body {
 h1 { color: #8b0000; }
 
 .couple-names {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     color: #8b0000;
-    margin: 15px 0;
     font-weight: bold;
+    line-height: 1.4;
+    letter-spacing: 1px;
+}
+
+/* 🌟 NEW BEAUTIFUL BACKGROUND */
+.names-box {
+    background: linear-gradient(135deg, #fff8e7, #fdf2d0);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 15px 0;
+    box-shadow: 0 5px 15px rgba(212,175,55,0.2);
+    border: 1px solid #f1d27a;
 }
 
 .couple-photo {
@@ -84,6 +94,12 @@ h1 { color: #8b0000; }
     color: white;
 }
 
+.btn-maps {
+    background: white;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+}
+
 .music-btn {
     position: absolute;
     top: 10px;
@@ -94,10 +110,14 @@ h1 { color: #8b0000; }
     cursor: pointer;
 }
 
+/* Hidden */
 #secret-details {
     display: none;
 }
 
+.venue-info {
+    margin-top: 10px;
+}
 </style>
 </head>
 
@@ -105,10 +125,12 @@ h1 { color: #8b0000; }
 
 <div class="card">
 
+<!-- 🔊 Hidden initially -->
 <button id="musicBtn" class="music-btn" onclick="toggleMusic()" style="display:none;">
 🔊
 </button>
 
+<!-- Cover -->
 <div id="cover">
     <h1>You're Invited!</h1>
     <p>To the wedding celebration of</p>
@@ -116,36 +138,44 @@ h1 { color: #8b0000; }
     <button class="btn btn-open" onclick="openInvite()">Open Invitation</button>
 </div>
 
+<!-- Details -->
 <div id="secret-details">
+
     <div class="couple-photo">
-        <img src="https://raw.githubusercontent.com/vinaykumarmanem-cmd/Weeding/main/couple.jpg.jpeg">
+        <img src="couple.jpg.jpeg" alt="Naga Raju & Sai Nirosha">
     </div>
 
-    <div class="couple-names">
-        Naga Raju <br>&<br> Sai Nirosha
-    </div>
-<p><strong>April 29, 2026</strong></p>
-
-        <div class="venue-info">
-            <strong>Venue:</strong><br>
-            At Our Residence, Chapara Village<br>
-            PIN: 532216
+    <!-- 🌟 Names with background -->
+    <div class="names-box">
+        <div class="couple-names">
+            Naga Raju <br>&<br> Sai Nirosha
         </div>
+    </div>
 
-        <a href="https://www.google.com/maps/search/?api=1&query=Chapara+Village+pedda+devara+veedhi+532216" 
-           target="_blank" class="btn btn-maps">
-           📍 View on Google Maps
-        </a>
+    <div style="color:#d4af37; font-size:20px;">❦ ❦ ❦</div>
 
-        <p style="margin-top:20px; font-size: 14px; color: #8b0000;">
-            Your presence will be a cherished blessing as we begin this new journey together ✨
-        </p>
+    <p><strong>April 29, 2026</strong></p>
+
+    <div class="venue-info">
+        <strong>Venue:</strong><br>
+        At Our Residence, Chapara Village<br>
+        PIN: 532216
+    </div>
+
+    <a href="https://www.google.com/maps/search/?api=1&query=Chapara+Village+pedda+devara+veedhi+532216" 
+       target="_blank" class="btn btn-maps">
+       📍 View on Google Maps
+    </a>
+
+    <p style="margin-top:20px; font-size: 14px; color: #8b0000;">
+        Your presence will be a cherished blessing as we begin this new journey together ✨
+    </p>
 
 </div>
 
 </div>
 
-<!-- ✅ FIXED AUDIO -->
+<!-- 🎵 MUSIC -->
 <audio id="bg-music" loop>
     <source src="song.mp3.mpeg" type="audio/mpeg">
 </audio>
@@ -155,7 +185,7 @@ function openInvite() {
     document.getElementById('cover').style.display = 'none';
     document.getElementById('secret-details').style.display = 'block';
 
-   document.getElementById('musicBtn').style.display = 'block';
+    document.getElementById('musicBtn').style.display = 'block';
 
     const music = document.getElementById('bg-music');
     music.play();
