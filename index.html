@@ -6,7 +6,6 @@
 <title>Wedding Invitation | Naga Raju & Sai Nirosha</title>
 
 <style>
-/* Animated Gradient Background */
 body {
     margin: 0;
     padding: 0;
@@ -27,7 +26,6 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* Card */
 .card {
     background: rgba(255, 255, 255, 0.95);
     padding: 40px;
@@ -57,7 +55,6 @@ h1 { color: #8b0000; }
     font-weight: bold;
 }
 
-/* Photo */
 .couple-photo {
     display: flex;
     justify-content: center;
@@ -78,7 +75,6 @@ h1 { color: #8b0000; }
     transform: scale(1.05);
 }
 
-/* Buttons */
 .btn {
     display: inline-block;
     padding: 12px 30px;
@@ -135,7 +131,7 @@ h1 { color: #8b0000; }
 
 <div class="card">
 
-<!-- Music Toggle -->
+<!-- 🔊 Music Toggle -->
 <button class="music-btn" onclick="toggleMusic()">🔊</button>
 
 <!-- Cover -->
@@ -178,33 +174,29 @@ h1 { color: #8b0000; }
 
 </div>
 
-<!-- 🎵 Background Music -->
-<audio id="bg-music" loop>
-    <!-- Replace this with your Telugu MP3 -->
-    <source src="https://www.mfiles.co.uk/mp3-downloads/edelweiss-piano.mp3" type="audio/mpeg">
+<!-- 🎵 Background Music (REPLACE LINK WITH YOUR SONG) -->
+<audio id="bg-music" loop preload="auto">
+    <source src="https://raw.githubusercontent.com/vinaykumarmanem-cmd/Wedding/main/song.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-let isPlaying = false;
-
 function openInvite() {
     document.getElementById('cover').style.display = 'none';
     document.getElementById('secret-details').style.display = 'block';
 
     let music = document.getElementById('bg-music');
-    music.play();
-    isPlaying = true;
+    music.play().catch(() => {
+        console.log("Autoplay blocked");
+    });
 }
 
 function toggleMusic() {
     let music = document.getElementById('bg-music');
 
-    if (isPlaying) {
-        music.pause();
-        isPlaying = false;
-    } else {
+    if (music.paused) {
         music.play();
-        isPlaying = true;
+    } else {
+        music.pause();
     }
 }
 </script>
