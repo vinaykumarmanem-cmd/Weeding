@@ -105,7 +105,9 @@ h1 { color: #8b0000; }
 
 <div class="card">
 
-<button class="music-btn" onclick="toggleMusic()">🔊</button>
+<button id="musicBtn" class="music-btn" onclick="toggleMusic()" style="display:none;">
+🔊
+</button>
 
 <div id="cover">
     <h1>You're Invited!</h1>
@@ -152,6 +154,8 @@ h1 { color: #8b0000; }
 function openInvite() {
     document.getElementById('cover').style.display = 'none';
     document.getElementById('secret-details').style.display = 'block';
+
+   document.getElementById('musicBtn').style.display = 'block';
 
     const music = document.getElementById('bg-music');
     music.play();
