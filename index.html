@@ -68,15 +68,9 @@ h1 { color: #8b0000; }
     border-radius: 50%;
     border: 4px solid #d4af37;
     box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-    transition: 0.3s;
-}
-
-.couple-photo img:hover {
-    transform: scale(1.05);
 }
 
 .btn {
-    display: inline-block;
     padding: 12px 30px;
     border-radius: 25px;
     font-weight: bold;
@@ -90,40 +84,20 @@ h1 { color: #8b0000; }
     color: white;
 }
 
-.btn-maps {
-    background: white;
-    color: #d4af37;
-    border: 1px solid #d4af37;
-}
-
-/* Music Button */
 .music-btn {
     position: absolute;
     top: 10px;
     right: 15px;
-    font-size: 18px;
-    cursor: pointer;
     background: none;
     border: none;
+    font-size: 18px;
+    cursor: pointer;
 }
 
-/* Hidden section */
 #secret-details {
     display: none;
-    animation: fadeIn 1.2s ease-in-out;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.venue-info {
-    background: #fff9f0;
-    padding: 15px;
-    border-radius: 15px;
-    margin: 15px 0;
-}
 </style>
 </head>
 
@@ -131,20 +105,15 @@ h1 { color: #8b0000; }
 
 <div class="card">
 
-<!-- 🔊 Music Toggle -->
 <button class="music-btn" onclick="toggleMusic()">🔊</button>
 
-<!-- Cover -->
 <div id="cover">
     <h1>You're Invited!</h1>
-    <p>To the wedding celebration of</p>
     <h2 style="color:#d4af37">Naga Raju & Sai Nirosha</h2>
     <button class="btn btn-open" onclick="openInvite()">Open Invitation</button>
 </div>
 
-<!-- Hidden Details -->
 <div id="secret-details">
-
     <div class="couple-photo">
         <img src="https://raw.githubusercontent.com/vinaykumarmanem-cmd/Wedding/main/couple.jpg.jpeg">
     </div>
@@ -152,31 +121,13 @@ h1 { color: #8b0000; }
     <div class="couple-names">
         Naga Raju <br>&<br> Sai Nirosha
     </div>
-
-    <p><strong>April 29, 2026</strong></p>
-
-    <div class="venue-info">
-        <strong>Venue:</strong><br>
-        At Our Residence, Chapara Village<br>
-        PIN: 532216
-    </div>
-
-    <a href="https://www.google.com/maps/search/?api=1&query=Chapara+Village+pedda+devara+veedhi+532216" 
-       target="_blank" class="btn btn-maps">
-       📍 View on Google Maps
-    </a>
-
-    <p style="margin-top:20px; font-size: 14px; color: #8b0000;">
-        Your presence will be a cherished blessing as we begin this new journey together ✨
-    </p>
-
 </div>
 
 </div>
 
-<!-- 🎵 LOCAL SONG (must be in same repo folder) -->
-<audio id="bg-music" loop preload="auto">
-    <source src="song.mp3" type="audio/mpeg">
+<!-- ✅ FIXED AUDIO -->
+<audio id="bg-music" loop>
+    <source src="song.mp3.mpeg" type="audio/mpeg">
 </audio>
 
 <script>
@@ -185,11 +136,7 @@ function openInvite() {
     document.getElementById('secret-details').style.display = 'block';
 
     const music = document.getElementById('bg-music');
-
-    music.currentTime = 0;
-    music.play().catch(() => {
-        alert("Tap anywhere to enable music 🎵");
-    });
+    music.play();
 }
 
 function toggleMusic() {
